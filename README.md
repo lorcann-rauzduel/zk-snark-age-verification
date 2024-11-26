@@ -1,17 +1,17 @@
-# 🔒 ZK-SNARK Age Verification
+# ZK-SNARK Age Verification
 
-## 📋 Description du Projet
+## Description
 
 Implémentation d'un simple mécanisme de vérification d'âge utilisant des preuves à divulgation nulle de connaissance (ZK-SNARK) pour la validation d'identité.
 
-## 🛠 Technologies utilisées
+## Technologies utilisées
 
 - **Circom**
 - **snarkjs**
 - **Solidity**
 - **Hardhat**
 
-## 🚀 Installation
+## Installation
 
 ### Prérequis
 
@@ -79,7 +79,7 @@ pnpm contribute
 npx hardhat test
 ```
 
-## 💻 Utilisation
+## Utilisation
 
 ### Génération de preuve
 
@@ -103,7 +103,7 @@ await ageGateway.verify(
 );
 ```
 
-### 📚 Ressources utiles
+### Ressources utiles
 
 - [Documentation Circom 2](https://docs.circom.io/)
 - [Documentation snarkjs](https://github.com/iden3/snarkjs)
