@@ -2,12 +2,11 @@
 
 ## 📋 Description du Projet
 
-Implémentation d'un simple mécanisme de vérification d'âge utilisant des preuves à divulgation nulle de connaissance (ZK-SNARK) pour la validation d'identité préservant la confidentialité.
+Implémentation d'un simple mécanisme de vérification d'âge utilisant des preuves à divulgation nulle de connaissance (ZK-SNARK) pour la validation d'identité.
 
 ## 🛠 Technologies utilisées
 
 - **Circom**
-- **CircomLib**
 - **snarkjs**
 - **Solidity**
 - **Hardhat**
