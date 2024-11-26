@@ -4,13 +4,6 @@
 
 Implémentation d'un simple mécanisme de vérification d'âge utilisant des preuves à divulgation nulle de connaissance (ZK-SNARK) pour la validation d'identité.
 
-## Technologies utilisées
-
-- **Circom**
-- **snarkjs**
-- **Solidity**
-- **Hardhat**
-
 ## Installation
 
 ### Prérequis
