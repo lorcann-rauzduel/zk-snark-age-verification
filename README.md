@@ -6,31 +6,11 @@ Implémentation d'un simple mécanisme de vérification d'âge utilisant des pre
 
 ## 🛠 Technologies utilisées
 
-- **Circom 2.1.4** : Langage de conception de circuits pour ZK-SNARK
-- **Solidity ^0.8.0** : Développement de contrats intelligents
-- **Hardhat** : Environnement de développement Ethereum
-- **CircomLib** : Bibliothèque de composants pour circuits ZK
-- **Ethereum** : Blockchain cible du projet
-
-## 🏗 Architecture du Système
-
-### 1. Circuit Circom (`circuits/commit.circom`)
-
-- Implémentation logique de la vérification d'âge
-- Utilisation du comparateur GreaterThan pour validation
-- Génération de preuves cryptographiques
-
-### 2. Contrat de Vérification (`contracts/AgeVerifier.sol`)
-
-- Contrat généré automatiquement via snarkJS
-- Validation des preuves ZK-SNARK
-- Vérification cryptographique embarquée
-
-### 3. Contrat Passerelle (`contracts/AgeGateway.sol`)
-
-- Interface principale pour les interactions utilisateur
-- Gestion des requêtes de vérification
-- Stockage sécurisé des résultats de vérification
+- **Circom**
+- **CircomLib**
+- **snarkjs**
+- **Solidity**
+- **Hardhat**
 
 ## 🚀 Installation
 
@@ -44,7 +24,7 @@ curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
 
 2. **[Node.js](https://nodejs.org/)** (v16+ recommandée)
 
-### Installation de Circom
+### Installation
 
 1. Cloner et compiler Circom :
 
@@ -69,11 +49,10 @@ npm install -g snarkjs
 
 ### Installation du projet
 
-1. Cloner le repository :
+1. Cloner le repository
 
 ```bash
-git clone [URL_DU_REPO]
-cd age-verifier-zk
+git clone https://github.com/lorcann-rauzduel/zk-snark-age-verification.git
 ```
 
 2. Installer les dépendances :
@@ -86,48 +65,16 @@ pnpm install
 
 ```bash
 # Compilation du circuit
-circom circuits/commit.circom --r1cs --wasm --sym
+pnpm compile
 
 # Génération de la trusted setup
-snarkjs powersoftau new bn128 12 pot12_0000.ptau -v
-snarkjs powersoftau contribute pot12_0000.ptau pot12_0001.ptau --name="First contribution"
-snarkjs powersoftau prepare phase2 pot12_0001.ptau pot12_final.ptau
-snarkjs groth16 setup commit.r1cs pot12_final.ptau commit_0000.zkey
-snarkjs zkey contribute commit_0000.zkey commit_0001.zkey --name="1st Contributor"
-snarkjs zkey export verificationkey commit_0001.zkey verification_key.json
+pnpm trusted-setup
+
+# Contribution à la trusted setup
+pnpm contribute
 ```
 
-4. Compiler les contrats Solidity :
-
-```bash
-npx hardhat compile
-```
-
-### 📚 Documentation Utile
-
-- [Documentation Circom 2](https://docs.circom.io/)
-- [Documentation snarkjs](https://github.com/iden3/snarkjs)
-- [Documentation Hardhat](https://hardhat.org/docs)
-- [ZK-SNARKs Expliqués](https://docs.circom.io/background/background/)
-
-### 🔍 Structure des Fichiers
-
-```
-.
-├── circuits/
-│   └── commit.circom      # Circuit de vérification d'âge
-├── contracts/
-│   ├── AgeGateway.sol     # Interface principale
-│   └── AgeVerifier.sol    # Vérificateur généré
-├── test/
-│   └── age.test.js        # Tests
-└── scripts/
-    └── deploy.js          # Script de déploiement
-```
-
-## 🧪 Tests
-
-Exécuter la suite de tests :
+4. Lancer les tests
 
 ```bash
 npx hardhat test
@@ -135,7 +82,7 @@ npx hardhat test
 
 ## 💻 Utilisation
 
-### Génération de Preuve
+### Génération de preuve
 
 ```typescript
 const { proof, publicSignals } = await generateProof({
@@ -143,7 +90,7 @@ const { proof, publicSignals } = await generateProof({
 });
 ```
 
-### Vérification sur la Blockchain
+### Vérification sur la blockchain
 
 ```typescript
 await ageGateway.verify(
@@ -157,20 +104,7 @@ await ageGateway.verify(
 );
 ```
 
-## 🔐 Sécurité
+### 📚 Ressources utiles
 
-- Aucune donnée personnelle n'est exposée
-- Preuves cryptographiquement vérifiables
-- Protection contre les attaques par rejeu
-
-## 📜 Licence
-
-[Spécifiez votre licence, par exemple MIT]
-
-## 🤝 Contributions
-
-Les contributions sont les bienvenues ! Merci de consulter `CONTRIBUTING.md` pour plus de détails.
-
-## 📞 Contact
-
-[Vos informations de contact ou lien vers votre profil]
+- [Documentation Circom 2](https://docs.circom.io/)
+- [Documentation snarkjs](https://github.com/iden3/snarkjs)

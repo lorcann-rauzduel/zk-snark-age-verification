@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "circom circuits/age.circom --r1cs --wasm --sym -o circuits",
-    "setup": "snarkjs groth16 setup circuits/age.r1cs circuits/ptau/powersOfTau28_hez_final_08.ptau circuits/initial.zkey",
+    "trusted-setup": "snarkjs groth16 setup circuits/age.r1cs circuits/ptau/powersOfTau28_hez_final_08.ptau circuits/initial.zkey",
     "contribute": "snarkjs zkey contribute circuits/initial.zkey circuits/final.zkey --name=\"1st Contributor\" -v",
     "export-verifier": "snarkjs zkey export solidityverifier circuits/final.zkey contracts/AgeVerifier.sol"
   },
